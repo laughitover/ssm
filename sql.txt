@@ -1,0 +1,11 @@
+CREATE TABLE `user_info` (                                
+             `uid` int(11) NOT NULL,                                 
+             `name` varchar(255) DEFAULT NULL,                       
+             `password` varchar(255) DEFAULT NULL,                   
+             `salt` varchar(255) DEFAULT NULL,                       
+             `state` tinyint(4) NOT NULL,                            
+             `username` varchar(255) DEFAULT NULL,                   
+             `credentials_salt` varchar(255) DEFAULT NULL,           
+             PRIMARY KEY (`uid`),                                    
+             UNIQUE KEY `UK_f2ksd6h8hsjtd57ipfq9myr64` (`username`)  
+           ) ENGINE=InnoDB DEFAULT CHARSET=utf8                      

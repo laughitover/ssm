@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resin xmlns="http://caucho.com/ns/resin" xmlns:resin="urn:java:com.caucho.resin">
+  <log-handler name="" level="all" path="stdout:" timestamp="[%y-%m-%d %H:%M:%S.%s] {%{thread}} " />
+  <class-loader>
+    <tree-loader path="${resin.root}/ext-lib" />
+  </class-loader>
+  <cluster id="app-tier">
+    <resin:import path="classpath:META-INF/caucho/app-default.xml" />
+    <server id="" address="127.0.0.1" port="6800">
+      <http address="*" port="8083" />
+    </server>
+    
+	<database>
+		<jndi-name>jdbc/ssm</jndi-name>
+		<driver type="org.gjt.mm.mysql.Driver">
+			<url>jdbc:mysql://127.0.0.1:3306/test</url>
+			<user>root</user>
+			<password>123456</password>
+		</driver>
+		<prepared-statement-cache-size>8</prepared-statement-cache-size>
+		<max-connections>20</max-connections>
+		<max-idle-time>30s</max-idle-time>
+	</database>
+
+    <host id="" root-directory="D:\qnsoft\workspace\ssm">
+      <web-app id="/ssm" root-directory="target/ssm" />
+    </host>
+  </cluster>
+</resin>
